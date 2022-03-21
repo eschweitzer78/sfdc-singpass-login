@@ -1,0 +1,25 @@
+<apex:page showHeader="false" applyHtmlTag="false" applyBodyTag="false" contentType="application/json"
+    controller="SingPass_JWKSController" action="{!tweakHeaders}">
+{
+  "keys": [
+    {
+      "kty": "EC",
+      "use": "enc",
+      "crv": "P-521",
+      "kid": "yourkid-enc",
+      "x": "your-x",
+      "y": "your-y",
+      "alg": "ECDH-ES+A256KW"
+    },
+    {
+      "kty": "EC",
+      "use": "sig",
+      "crv": "P-521",
+      "kid": "yourkid-sig",
+      "x": "your-x",
+      "y": "your-y",
+      "alg": "ES512"
+    } 
+  ]
+}
+</apex:page>

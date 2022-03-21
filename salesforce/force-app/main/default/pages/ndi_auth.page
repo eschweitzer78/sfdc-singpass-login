@@ -1,0 +1,61 @@
+<apex:page
+  showHeader="false" applyHtmlTag="true" applyBodyTag="false"
+  controller="SingPass_NdiAuthController"
+>
+  <!-- TODO: change for prod -->
+  <script src="https://stg-id.singpass.gov.sg/static/ndi_embedded_auth.js"></script>
+  
+  <script>
+    async function init() {
+      let client_id = "{!$CurrentPage.parameters.client_id}";
+      let state = "{!$CurrentPage.parameters.state}";
+      let nonce = "{!$CurrentPage.parameters.nonce}";
+
+
+      // TODO: we should verify where the redirect came from
+
+      Visualforce.remoting.Manager.invokeAction(
+        '{!$RemoteAction.SingPass_NdiAuthController.getStateHash}',
+        state,
+        function(result, event) {
+          let stateHash = result;
+
+          if (event.status) {
+            const authParamsSupplier = async () => {
+              return { state: stateHash, nonce: nonce };
+            };
+  
+            const onError = (errorId, message) => {
+              console.log(`onError. errorId:${errorId} message:${message}`);
+            };
+  
+            // TODO: change community base url
+            const initAuthSessionResponse = window.NDI.initAuthSession(
+              "ndi-qr", {
+                clientId: client_id,
+                redirectUri: "https://community-base-url/ndi_auth_cb",
+                scope: "openid",
+                responseType: "code",
+              },
+              authParamsSupplier,
+              onError
+            );
+          } else if (event.type == 'exception') {
+            console.log('remoting exception', event.message, event.where);
+          } else {
+            console.log('remoting error', event.message);
+          }
+        },
+        {
+          escape: true
+        });
+
+    }
+  </script>
+  
+  <body onload="init()">
+    <div id="ndi-qr">
+    </div>
+  </body>
+    
+ </apex:page>

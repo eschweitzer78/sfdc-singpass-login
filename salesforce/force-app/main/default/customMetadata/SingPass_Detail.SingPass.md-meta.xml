@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>SingPass</label>
+    <protected>false</protected>
+    <values>
+        <field>Client_Id__c</field>
+        <!-- 32 character client_id -->
+        <value xsi:type="xsd:string">SingPass assigned clientId</value>
+    </values>
+    <values>
+        <field>Kid__c</field>
+        <!-- Your signature keyId from jwks -->
+        <value xsi:type="xsd:string">Your signature keyId from jwks</value>
+    </values>
+    <values>
+        <field>Token_Url__c</field>
+        <!-- Change for production -->
+        <value xsi:type="xsd:string">https://stg-id.singpass.gov.sg/token</value>
+    </values>
+</CustomMetadata>

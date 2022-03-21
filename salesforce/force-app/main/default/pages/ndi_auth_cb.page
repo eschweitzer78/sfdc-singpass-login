@@ -1,0 +1,9 @@
+<apex:page
+  showHeader="false" applyHtmlTag="true" applyBodyTag="false"
+  controller="SingPass_NdiAuthController"
+  action="{!redirect}"
+>
+    <body>
+        <p>Redirecting</p>
+    </body>
+</apex:page>
