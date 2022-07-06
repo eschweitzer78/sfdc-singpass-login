@@ -4,4 +4,4 @@ Code snippets to use as an inspiration when implementing SingPass Login with Sal
 
 ## Documentation and more about SingPass Login
 
-Have a look at our [documentation](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+Have a look at our [documentation](https://github.com/eschweitzer78/sfdc-singpass-login/blob/main/Singpass%20Login%20Support%20with%20Salesforce.pdf).
